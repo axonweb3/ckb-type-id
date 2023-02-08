@@ -62,6 +62,8 @@ fn locate_first_type_id_output_index() -> Result<usize, Error> {
     Ok(i)
 }
 
+/// Given a 32-byte type id, this function validates if
+/// current transaction confronts to the type ID rules.
 pub fn validate_type_id(type_id: [u8; 32]) -> Result<(), Error> {
     if has_type_id_cell(1, Source::GroupInput) || has_type_id_cell(1, Source::GroupOutput) {
         debug!("There can only be at most one input and at most one output type ID cell!");
@@ -92,6 +94,8 @@ pub fn validate_type_id(type_id: [u8; 32]) -> Result<(), Error> {
     Ok(())
 }
 
+/// Loading type ID from current script args, type_id must be at least 32 byte
+/// long.
 pub fn load_type_id_from_script_args(offset: usize) -> Result<[u8; 32], Error> {
     let script = load_script()?;
     let args = script.as_reader().args();
