@@ -1,6 +1,6 @@
 [package]
 name = "ckb-type-id"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 authors = ["Nervos Dev <dev@nervos.org>"]
 description = "ckb type id library."
 edition = "2021"

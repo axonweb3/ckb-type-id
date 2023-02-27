@@ -34,7 +34,7 @@ impl From<SysError> for Error {
 fn has_type_id_cell(index: usize, source: Source) -> bool {
     let mut buf = Vec::new();
     match load_cell(&mut buf, 0, index, source) {
-        Ok(r) => r as u64 == CKB_SUCCESS,
+        Ok(_) => true,
         Err(e) => {
             // just confirm cell presence, no data needed
             if let SysError::LengthNotEnough(_) = e {
