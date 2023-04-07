@@ -4,7 +4,7 @@ extern crate alloc;
 
 use alloc::vec::Vec;
 use ckb_std::{
-    ckb_constants::{Source, CKB_SUCCESS},
+    ckb_constants::Source,
     debug,
     error::SysError,
     high_level::{load_cell_type_hash, load_input, load_script, load_script_hash},
