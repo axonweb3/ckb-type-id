@@ -4,7 +4,7 @@ extern crate alloc;
 
 use alloc::vec::Vec;
 use ckb_std::{
-    ckb_constants::{Source, CKB_SUCCESS},
+    ckb_constants::Source,
     debug,
     error::SysError,
     high_level::{load_cell_type_hash, load_input, load_script, load_script_hash},
@@ -51,10 +51,9 @@ fn locate_first_type_id_output_index() -> Result<usize, Error> {
 
     let mut i = 0;
     loop {
-        let type_hash =
-            load_cell_type_hash(i, Source::Output)?.ok_or(Error::Syscall(SysError::ItemMissing))?;
+        let type_hash = load_cell_type_hash(i, Source::Output)?;
 
-        if type_hash == current_script_hash {
+        if type_hash == Some(current_script_hash) {
             break;
         }
         i += 1
